@@ -1,16 +1,19 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
+Route::group(['prefix' => 'api/v1'], function () {
+    Route::resource('meeting', 'MeetingController', [
+        'except' => ['edit', 'create']
+    ]);
 
-Route::get('/', function () {
-    return view('welcome');
+    Route::resource('meeting/registration', 'RegistrationController', [
+        'only' => ['store', 'destroy']
+    ]);
+
+    Route::post('user', [
+        'uses' => 'AuthController@store'
+    ]);
+
+    Route::post('user/signin', [
+        'uses' => 'AuthController@signin'
+    ]);
 });
