@@ -16,7 +16,7 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'It wurks';
     }
 
     /**
@@ -27,6 +27,6 @@ class RegistrationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'It wurks';
     }
 }
